@@ -40,6 +40,9 @@ def env(tmp_path, monkeypatch):
   scenarios: {}
 """)
     monkeypatch.setattr(build, "MAPPINGS", mappings)
+    monkeypatch.setattr(build, "load_rates", lambda: {"EUR": {}, "USD": {}})
+    import pipeline.credit as credit
+    monkeypatch.setattr(credit, "BONDS", tmp_path / "bonds")
     snap = {"fetched_at": "2026-09-21T12:00:00+00:00", "events": {
         "ladder-ev": {"id": "1", "title": "Ladder", "markets": [
             _market("a", "X by December 31, 2026?", 0.20, "2027-01-01T04:59:00Z", "December 31"),

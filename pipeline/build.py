@@ -19,6 +19,7 @@ from analytics.hazard import Rung, build_curve, to_dict as hazard_to_dict
 from analytics.moves import compute_moves
 from analytics.quality import grade_market
 from pipeline.config import HISTORY, MAPPINGS, SITE_DATA, SNAPSHOTS
+from pipeline.credit import event_credit, load_rates
 
 MONTHS = {m: i for i, m in enumerate(
     ["january", "february", "march", "april", "may", "june", "july",
@@ -104,11 +105,41 @@ def interp_cdf(curve: dict, t_years: float) -> float | None:
     return ys[-1]
 
 
+def hazard_history(markets: list[dict], kind: str, asof: date, days: int = 120,
+                   tenors: tuple[float, ...] = (0.25, 0.5, 0.75, 1.0, 1.25, 1.5)) -> dict:
+    """Rebuild the ladder's fitted curve for each past day from the rungs' own
+    price histories, and sample the average hazard to fixed tenors. Feeds the
+    time × tenor heatmap. Rungs without a price on a given day are skipped."""
+    import math
+    from datetime import timedelta
+
+    by_day: dict[str, list[tuple[date, float, str]]] = {}
+    for m in markets:
+        t = date.fromisoformat(m["rung_t"])
+        for d, v in m["history"]:
+            p = 1 - v if kind == "survival" else v
+            by_day.setdefault(d, []).append((t, p, m["grade"]))
+    rows: list[dict] = []
+    for k in range(days, -1, -1):
+        d = asof - timedelta(days=k)
+        rs = by_day.get(d.isoformat())
+        if not rs or len(rs) < 3:
+            continue
+        curve = build_curve([Rung(t=t, p=p, grade=g) for t, p, g in rs], d)
+        cd = hazard_to_dict(curve)
+        vals: list[float | None] = []
+        for T in tenors:
+            pT = interp_cdf(cd, T)
+            vals.append(-math.log(1 - pT) / T if pT is not None and pT < 1 else None)
+        rows.append({"asof": d.isoformat(), "avg_hazard": vals})
+    return {"tenors": list(tenors), "rows": rows}
+
+
 def exposures_summary(exps: list[dict]) -> list[str]:
     return [e["issuer"] for e in exps]
 
 
-def build_event(entry: dict, ev: dict, asof: date) -> tuple[dict, list[dict]]:
+def build_event(entry: dict, ev: dict, asof: date, rates: dict) -> tuple[dict, list[dict]]:
     slug = entry["slug"]
     kind = entry["kind"]
     markets = [enrich(m, asof) for m in ev["markets"]]
@@ -135,6 +166,7 @@ def build_event(entry: dict, ev: dict, asof: date) -> tuple[dict, list[dict]]:
         curve = build_curve(rungs, asof)
         hazard = hazard_to_dict(curve)
         hazard["kind"] = kind
+        hazard["history"] = hazard_history(markets, kind, asof) if entry.get("headline") else None
         p12 = interp_cdf(hazard, 1.0)
         # board row: P(12m) from the fitted curve; moves from the benchmark rung
         # (highest lifetime volume among live rungs) so a newly-listed thin rung
@@ -195,13 +227,38 @@ def build_event(entry: dict, ev: dict, asof: date) -> tuple[dict, list[dict]]:
         r["spark"] = [v for _, v in m["history"][-30:]] if m else []
         r["p_raw"] = m["p"] if m else None
 
+    # credit side: bond quotes, implied hazard, beta to the crowd series
+    def _series(m: dict | None) -> list[tuple[date, float]]:
+        if not m:
+            return []
+        sign = kind == "survival"
+        return [(date.fromisoformat(d), (1 - v) if sign else v) for d, v in m["history"]]
+    bench = None
+    if kind in ("ladder", "survival") and hazard and hazard.get("benchmark_market_id"):
+        bench = by_id.get(hazard["benchmark_market_id"])
+    elif kind == "menu":
+        bench = by_id.get(rows[0]["market_id"]) if rows else None
+    elif kind == "single":
+        bench = live[0] if live else None
+    name_series = None
+    if kind == "basket":
+        name_series = {n["match"]: _series(by_id.get(r["market_id"]))
+                       for n, r in zip(entry.get("names", []), rows)}
+    credit = event_credit(entry, _series(bench), asof, rates, name_series)
+    for r in rows:
+        hl = next((c for c in credit["rows"] if c["isin"] == credit["headline"]), None)
+        if kind == "basket":
+            hl = next((c for c in credit["rows"] if c["quoted"] and c.get("issuer") == r["subtitle"]), None)
+        r["beta"] = hl["beta"]["beta"] if hl and hl.get("beta") and hl["beta"].get("beta") is not None else None
+        r["beta_isin"] = hl["isin"] if hl else None
+
     desc = next((m["description"] for m in live if m.get("description")), None)
     event_json = {
         **base_row, "asof": asof.isoformat(),
         "polymarket_url": f"https://polymarket.com/event/{slug}",
         "focus": entry.get("focus"), "names": entry.get("names", []),
         "exposures_full": entry.get("exposures", []), "scenarios": entry.get("scenarios", {}),
-        "resolution": desc, "hazard": hazard,
+        "resolution": desc, "hazard": hazard, "credit": credit,
         "markets": [{k: v for k, v in m.items() if k != "description"} for m in markets],
         "event_volume": ev.get("volume"), "event_liquidity": ev.get("liquidity"),
     }
@@ -213,6 +270,7 @@ def run() -> None:
     mappings = yaml.safe_load(MAPPINGS.read_text())
     (SITE_DATA / "events").mkdir(parents=True, exist_ok=True)
 
+    rates = load_rates()
     rows: list[dict] = []
     curves: list[dict] = []
     for entry in mappings:
@@ -220,7 +278,7 @@ def run() -> None:
         if not ev:
             print(f"  !! {entry['slug']} missing from snapshot", file=sys.stderr)
             continue
-        event_json, ev_rows = build_event(entry, ev, asof)
+        event_json, ev_rows = build_event(entry, ev, asof, rates)
         (SITE_DATA / "events" / f"{entry['slug']}.json").write_text(json.dumps(event_json))
         rows.extend(ev_rows)
         if event_json["hazard"] and event_json["hazard"]["rungs"]:

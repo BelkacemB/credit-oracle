@@ -27,13 +27,16 @@ jobs:
       - run: uv run pytest -q
       - name: fetch Polymarket
         run: uv run python -m pipeline.fetch_polymarket
+      - name: fetch bond quotes (best effort)
+        continue-on-error: true
+        run: uv run python -m pipeline.fetch_bonds
       - name: build site data
         run: uv run python -m pipeline.build
       - name: commit snapshot
         run: |
           git config user.name "credit-oracle bot"
           git config user.email "bot@users.noreply.github.com"
-          git add data/snapshots data/history site/data
+          git add data/snapshots data/history data/bonds data/rates.json
           git diff --cached --quiet || git commit -m "data: $(date -u +%Y-%m-%dT%H:%MZ)"
           git push
       - uses: actions/upload-pages-artifact@v3

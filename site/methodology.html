@@ -42,15 +42,28 @@ E[T | T ≤ t_last] = Σ (P̂ᵢ − P̂ᵢ₋₁) · (tᵢ₋₁ + tᵢ)/2  ÷ 
   <h2>Mapping</h2>
   <p>The event → channel → instrument mapping is hand-curated in a versioned YAML file. Categories follow the usual event-driven sub-strategy split (Special Situations, Distressed, Merger Arb, Macro) plus an explicit <em>Beta</em> bucket for things like "US recession" — shown so the board can separate systematic from idiosyncratic rather than pretend the former is alpha. Confidence on each exposure line is about the transmission channel, not about the event. ISINs marked "to verify" are descriptive placeholders awaiting a terminal check.</p>
 
+  <h2 id="credit">Crowd vs. credit</h2>
+  <p>For every mapped instrument with a public quote, the event page shows the bond next to the crowd. Two different things are computed, and they are kept apart on purpose.</p>
+  <h3>β to the crowd probability</h3>
+  <p>Bond closes (Frankfurt, delayed) and the event's benchmark Polymarket market are aligned on calendar days over the overlap of both histories. Both are differenced over 7-day windows; bond price changes (points) are regressed on probability changes (points) by ordinary least squares. Reported: the slope β, the correlation ρ, and n. Below 12 weekly pairs nothing is reported. This answers <em>"has the bond been moving with the crowd's view of the catalyst?"</em> — it is descriptive, short-sample, and says nothing about causation.</p>
+  <h3>Bond-implied hazard (bullet bonds only)</h3>
+  <div class="formula">ytm     : price = Σ c/(1+y)^t + 100/(1+y)^T        annual compounding, ACT/365.25
+spread  : ytm − govt spot at the same tenor         ECB AAA curve (EUR) · FRED constant-maturity (USD)
+λ       : spread / (1 − R)                          credit-triangle approximation
+PD(1y)  : 1 − exp(−λ)</div>
+  <p>Recovery R by instrument type: senior secured 50%, senior 40%, sovereign 35%, convertible 30%, hybrid / Tier 2 20%, AT1 / RT1 10%. Ignored: accrued interest, liquidity premium, hazard term structure, and coupon step-ups (Ukraine's restructured bonds step up over time; the current coupon is used, which understates their yield). Perpetuals — every AT1 and corporate hybrid on the site — get a running yield only, because a yield-to-call needs the first-call date and the public master data does not carry it.</p>
+  <p>The bond-implied λ is a <em>default</em> intensity. The crowd-implied λ on a ladder page is the intensity of <em>that event</em> (a ceasefire, a budget). They are shown near each other because a credit PM wants both in view; they are not the same quantity and the site never subtracts one from the other.</p>
+
   <h2>What's missing, honestly</h2>
   <ul>
-    <li><strong>European single names.</strong> Polymarket's bankruptcy markets are almost all US. The direct "crowd PD vs bond-implied PD" comparison therefore runs on US names for now. The gap is itself informative about where prediction markets would need to grow to be useful to a European sub-debt book.</li>
-    <li><strong>Bond-implied comparison</strong> (crowd P vs. spread-implied PD with a recovery assumption) is in progress; it will carry the same rough-and-stated treatment as everything else here.</li>
+    <li><strong>European single names.</strong> Polymarket's bankruptcy markets are almost all US. The direct "crowd PD vs. bond-implied PD on the same issuer" comparison therefore has no European case yet. The gap is itself informative about where prediction markets would need to grow to be useful to a European sub-debt book.</li>
+    <li><strong>US bond prices.</strong> The US names that do have Polymarket bankruptcy markets (JetBlue, Carvana, Frontier…) are not quoted on Frankfurt and there is no free, scriptable TRACE feed. So the one place where crowd PD and bond PD could be put side by side is exactly where the public price is missing. A terminal fixes this in an afternoon.</li>
+    <li><strong>Yield-to-call for perpetuals.</strong> Needs first-call dates; not in public master data.</li>
     <li><strong>Resolution risk.</strong> A market resolves on its written rules, which are not always the credit event you care about. The rules are shown on each event page for that reason.</li>
   </ul>
 
   <h2>Data &amp; cadence</h2>
-  <p>Polymarket Gamma API (event and market metadata, best bid/ask) and CLOB API (daily price history), both public and unauthenticated. Refreshed every six hours by a scheduled job; the repository holds every snapshot.</p>
+  <p>Polymarket Gamma API (event and market metadata, best bid/ask) and CLOB API (daily price history), both public and unauthenticated. Bond quotes and closes from Deutsche Börse's public site (Frankfurt, delayed; unofficial and best-effort — when it breaks, the site shows "no public quote" and nothing else changes). Risk-free curves from the ECB Data Portal and FRED. Refreshed every six hours by a scheduled job; the repository holds every snapshot.</p>
 </main>
 <footer class="wrap">
   <p>Research tool, not investment advice. Prediction-market prices are what they are: thin, US-centric, and only a probability where someone will trade them — hence the liquidity grade next to every number. Polymarket data via its public API, as-is.</p>

@@ -44,7 +44,7 @@ async function renderBoard() {
     let v = rows.filter(r => (state.cat === "all" || r.category === state.cat) && gradeRank[r.grade] >= gradeRank[state.minGrade]);
     const key = {
       d7abs: r => Math.abs(r.d7 ?? 0), p: r => r.p ?? -1, d7: r => r.d7 ?? -9, d30: r => r.d30 ?? -9,
-      title: r => r.title, grade: r => gradeRank[r.grade], category: r => r.category,
+      title: r => r.title, grade: r => gradeRank[r.grade], category: r => r.category, beta: r => Math.abs(r.beta ?? 0),
     }[state.sort];
     v.sort((a, b) => (key(a) > key(b) ? 1 : key(a) < key(b) ? -1 : 0) * (state.dir === "desc" ? -1 : 1));
     tbody.innerHTML = v.map(r => `
@@ -58,6 +58,7 @@ async function renderBoard() {
         <td class="hide-sm">${sparkline(r.spark.map(v => [0, v]))}</td>
         <td>${gradeCell(r.grade)}</td>
         <td class="hide-sm">${dirCell(r.direction)}</td>
+        <td class="num hide-sm">${r.beta == null ? '<span class="muted">–</span>' : `<span class="delta" title="${esc(r.beta_isin)}">${r.beta > 0 ? "+" : ""}${r.beta.toFixed(2)}</span>`}</td>
         <td class="exp hide-sm">${r.exposures.map(esc).join(" · ")}</td>
       </tr>`).join("");
     document.querySelectorAll("#board th[data-sort]").forEach(th => {
@@ -133,6 +134,34 @@ async function renderEvent() {
   }
   html += `</tbody></table></div>`;
 
+  // crowd vs credit
+  const C = ev.credit || { rows: [] };
+  const quoted = C.rows.filter(r => r.quoted);
+  const hl = quoted.find(r => r.isin === C.headline);
+  if (C.rows.length) {
+    html += `<h2>Crowd vs. credit</h2>`;
+    if (hl) {
+      const b = hl.beta || {};
+      const hasBeta = b.beta != null;
+      html += `<div class="stats">
+        <div class="stat"><div class="k">${esc(hl.note)}</div><div class="v">${hl.price.toFixed(2)}</div><div class="small muted">mid · last trade ${esc(hl.last_trade)} · Frankfurt</div></div>
+        <div class="stat"><div class="k">β to crowd probability</div><div class="v">${hasBeta ? (b.beta > 0 ? "+" : "") + b.beta.toFixed(2) : "–"}<small> pts / pt</small></div><div class="small muted">${hasBeta ? `ρ ${b.corr.toFixed(2)} · n ${b.n} weekly pairs` : `n ${b.n ?? 0} — not enough overlap yet`}</div></div>
+        ${hl.implied && hl.implied.spread != null ? `<div class="stat"><div class="k">Bond-implied hazard</div><div class="v">${(hl.implied.hazard * 100).toFixed(1)}<small>%/yr</small></div><div class="small muted">${(hl.implied.spread * 1e4).toFixed(0)}bp over ${hl.currency} govt · R ${(hl.implied.recovery * 100).toFixed(0)}%</div></div>` : `<div class="stat"><div class="k">Running yield</div><div class="v">${hl.running_yield != null ? (hl.running_yield * 100).toFixed(2) : "–"}<small>%</small></div><div class="small muted">perpetual — no yield-to-call without a call date</div></div>`}
+      </div>
+      <div class="grid2">
+        <div class="card"><h3 style="margin-top:0">${esc(hl.note)} — price</h3><div id="bondpx"></div>
+          <h3>Crowd probability, same dates${isLadder ? " (benchmark rung)" : ""}</h3><div id="crowdpx"></div></div>
+        <div class="card"><h3 style="margin-top:0">Weekly Δ: bond vs. crowd</h3><div id="scatter"></div>
+          <p class="small muted">Each dot is one 7-day window. Dashed line is the OLS slope β. ${hasBeta ? `Read: a 10-pt move in the crowd probability has gone with ≈ ${(b.beta * 10 > 0 ? "+" : "")}${(b.beta * 10).toFixed(1)} pts on the bond.` : ""}</p></div>
+      </div>`;
+    }
+    html += `<div class="card" style="margin-top:16px;overflow-x:auto"><table class="plain"><thead><tr><th>Instrument</th><th class="num">Mid</th><th class="num">Run. yield</th><th class="num">YTM</th><th class="num">Spread</th><th class="num">λ bond</th><th class="num">β</th><th class="num">ρ</th><th class="num">n</th></tr></thead><tbody>
+      ${C.rows.map(r => r.quoted ? `<tr><td>${esc(r.issuer)} <span class="muted small">${esc(r.note)}</span></td><td class="num">${r.price.toFixed(2)}</td><td class="num">${r.running_yield != null ? (r.running_yield * 100).toFixed(2) + "%" : "–"}</td><td class="num">${r.implied && r.implied.ytm != null ? (r.implied.ytm * 100).toFixed(2) + "%" : "–"}</td><td class="num">${r.implied && r.implied.spread != null ? (r.implied.spread * 1e4).toFixed(0) + "bp" : "–"}</td><td class="num">${r.implied && r.implied.hazard != null ? (r.implied.hazard * 100).toFixed(1) + "%" : "–"}</td><td class="num">${r.beta && r.beta.beta != null ? (r.beta.beta > 0 ? "+" : "") + r.beta.beta.toFixed(2) : "–"}</td><td class="num">${r.beta && r.beta.corr != null ? r.beta.corr.toFixed(2) : "–"}</td><td class="num">${r.beta ? r.beta.n : "–"}</td></tr>`
+        : `<tr class="muted"><td>${esc(r.issuer)} <span class="small">${esc(r.note)}</span></td><td class="num" colspan="8">no public quote</td></tr>`).join("")}
+    </tbody></table>
+    <p class="small muted">Quotes: Deutsche Börse (Frankfurt), delayed. YTM/spread/λ only for bullet bonds (λ = spread / (1 − R); R by instrument type, see methodology). β = OLS slope of 7-day bond price changes (pts) on 7-day crowd probability changes (pts), over the overlap of both histories. <a href="methodology.html#credit">Method</a>.</p></div>`;
+  }
+
   // exposures + scenarios
   const exps = ev.kind === "basket" ? ev.names : ev.exposures_full;
   html += `<div class="grid2" style="margin-top:16px">
@@ -152,6 +181,18 @@ async function renderEvent() {
     tenorChart(document.querySelector("#haz"), [{ name: "hazard", color: "--s1", tenor: H.tenor_years, values: H.hazard, step: true }], { fmt: v => Math.round(v * 100) + "%/yr" });
   }
   if (histM && histM.history.length > 1) lineChart(document.querySelector("#hist"), histM.history);
+  if (hl && hl.history.length > 1) {
+    const b = hl.beta || {};
+    const win = b.window || [hl.history[0][0], hl.history[hl.history.length - 1][0]];
+    const crowdSeries = (isLadder && H ? (live.find(m => m.id === H.benchmark_market_id) || live[0]) : focus)?.history || [];
+    const cs = ev.kind === "survival" ? crowdSeries.map(([d, v]) => [d, 1 - v]) : crowdSeries;
+    const bh = hl.history.filter(([d]) => d >= win[0] && d <= win[1]);
+    const ch = cs.filter(([d]) => d >= win[0] && d <= win[1]);
+    lineChart(document.querySelector("#bondpx"), bh.length > 1 ? bh : hl.history, { price: true, color: "--s2", h: 180, x0: win[0], x1: win[1] });
+    lineChart(document.querySelector("#crowdpx"), ch.length > 1 ? ch : cs, { h: 180, x0: win[0], x1: win[1] });
+    if (b.pairs && b.pairs.length) scatterChart(document.querySelector("#scatter"), b.pairs, { beta: b.beta, step: b.step_days, h: 380 });
+    else document.querySelector("#scatter").innerHTML = '<p class="muted small">Not enough overlapping history yet.</p>';
+  }
 }
 
 function interp(H, t) {
@@ -171,11 +212,14 @@ async function renderHazard() {
   root.innerHTML = `
     <div class="card"><h3 style="margin-top:0">Crowd-implied hazard curves, all ladders</h3><div id="ov"></div>
       <div class="legend">${curves.map((c, i) => `<span><span class="sw" style="background:var(--s${i + 1})"></span>${esc(c.title)}${c.kind === "survival" ? " (hazard of ending)" : ""}</span>`).join("")}</div></div>
+    ${(() => { const hc = data.curves.find(c => c.headline && c.history && c.history.rows.length); return hc ? `<h2>${esc(hc.title)} — hazard curve over time</h2><div class="card"><div id="hm"></div><p class="small muted">Rows are days (fitted curve rebuilt from each rung's own price history), columns are tenors; a cell is the average hazard from that day to that tenor, −ln(1−P̂(T))/T. Hatched = the ladder did not yet reach that tenor.</p></div>` : ""; })()}
     <h2>Per-ladder detail</h2>
     <div class="card" style="overflow-x:auto"><table class="plain"><thead><tr><th>Ladder</th><th class="num">rungs</th><th class="num">P(12m)</th><th class="num">λ 12m</th><th class="num">E[T | occurs]</th><th class="num">P(last rung)</th><th class="num">moved by fit</th></tr></thead><tbody>
       ${data.curves.map(c => { const p12 = interp(c, 1); return `<tr><td><a href="event.html?slug=${encodeURIComponent(c.slug)}">${esc(c.title)}</a></td><td class="num">${c.rungs.length}</td><td class="num">${p12 == null ? "–" : pct(p12)}</td><td class="num">${p12 == null ? "–" : (-Math.log(1 - p12) * 100).toFixed(0) + "%/yr"}</td><td class="num">${c.expected_time_years == null ? "–" : c.expected_time_years.toFixed(2) + " y"}</td><td class="num">${pct(c.p_last)}</td><td class="num">${c.violations}</td></tr>`; }).join("")}
     </tbody></table></div>`;
   tenorChart(document.querySelector("#ov"), curves.map((c, i) => ({ name: c.title, color: `--s${i + 1}`, tenor: c.tenor_years, values: c.hazard, step: true })), { fmt: v => Math.round(v * 100) + "%/yr", h: 300 });
+  const hc = data.curves.find(c => c.headline && c.history && c.history.rows.length);
+  if (hc) heatmap(document.querySelector("#hm"), hc.history.rows, hc.history.tenors);
 }
 
 setAsof();

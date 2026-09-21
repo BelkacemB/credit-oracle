@@ -23,9 +23,9 @@
     <span class="muted">click a header to sort · bold-left rows are headline ladders</span>
   </div>
   <div style="overflow-x:auto"><table class="board" id="board"><thead><tr>
-    <th data-sort="title">Event</th><th data-sort="category" class="hide-sm">Category</th><th data-sort="p" class="num">P</th><th data-sort="d7" class="num">Δ 7d (pts)</th><th data-sort="d30" class="num hide-sm">Δ 30d</th><th class="hide-sm">30d</th><th data-sort="grade">Liq</th><th class="hide-sm">Credit</th><th class="hide-sm">Exposed</th>
+    <th data-sort="title">Event</th><th data-sort="category" class="hide-sm">Category</th><th data-sort="p" class="num">P</th><th data-sort="d7" class="num">Δ 7d (pts)</th><th data-sort="d30" class="num hide-sm">Δ 30d</th><th class="hide-sm">30d</th><th data-sort="grade">Liq</th><th class="hide-sm">Credit</th><th data-sort="beta" class="num hide-sm">β</th><th class="hide-sm">Exposed</th>
   </tr></thead><tbody></tbody></table></div>
-  <p class="small muted">P = mid of best bid/ask on the YES token. For ladders, P is the probability of the event within 12 months, interpolated on the monotone-fitted curve, and λ its average annualised hazard. Credit column = direction for the exposed credit if YES resolves. Grade: A liquid, B tradeable, C thin — <a href="methodology.html">rules</a>.</p>
+  <p class="small muted">P = mid of best bid/ask on the YES token. For ladders, P is the probability of the event within 12 months, interpolated on the monotone-fitted curve, and λ its average annualised hazard. Credit column = direction for the exposed credit if YES resolves. β = how many price points the headline exposed bond has moved per point of crowd probability (7-day changes, OLS). Grade: A liquid, B tradeable, C thin — <a href="methodology.html">rules</a>.</p>
 </main>
 <footer class="wrap">
   <p>Research tool, not investment advice. Prediction-market prices are what they are: thin, US-centric, and only a probability where someone will trade them — hence the liquidity grade next to every number. Polymarket data via its public API, as-is.</p>

@@ -10,6 +10,8 @@
 # category:    merger_arb | special_situations | distressed | macro | beta   (FSAM sub-strategy taxonomy)
 # direction:   effect on the *credit* if YES resolves: positive | negative | mixed
 # confidence:  how sure the transmission channel is, not how likely the event is
+# ISINs verified 2026-09-21 against Deutsche Börse (live.deutsche-boerse.com) unless noted 'no EU quote'.
+# headline_instrument: the ISIN whose price is charted against the crowd probability on the event page.
 
 - slug: russia-x-ukraine-ceasefire-agreement-by
   title: Russia–Ukraine ceasefire agreement
@@ -18,189 +20,279 @@
   direction: positive
   headline: true
   exposures:
-    - issuer: Raiffeisen Bank International
-      instruments:
-        - {isin: XS2785548053, type: AT1, note: "RBI 7.375% PerpNC"}
-        - {isin: XS1640667116, type: AT1, note: "RBI 6.125% PerpNC (reset)"}
-      channel: "Russian subsidiary deconsolidation / sanction-relief path; largest single geopolitical overhang on an EU bank AT1"
-      confidence: high
-    - issuer: OTP Bank
-      instruments: [{isin: null, type: T2, note: "OTP EUR Tier 2", verify: true}]
-      channel: "Ukraine + Russia exposure, CEE risk premium"
-      confidence: medium
-    - issuer: Ukraine (sovereign)
-      instruments: [{isin: null, type: sovereign, note: "2024 restructured Eurobonds / GDP warrants", verify: true}]
-      channel: "Reconstruction financing, warrant trigger economics"
-      confidence: high
+  - issuer: Raiffeisen Bank International
+    instruments:
+    - isin: XS2785548053
+      type: AT1
+      note: RBI 7.375% PerpNC, EUR 650m
+    - isin: XS1640667116
+      type: AT1
+      note: RBI 6.125% PerpNC (reset)
+    channel: Russian subsidiary deconsolidation / sanction-relief path; the largest single geopolitical overhang
+      on an EU bank AT1
+    confidence: high
+  - issuer: OTP Bank
+    instruments:
+    - isin: XS3094548123
+      type: senior_preferred
+      note: OTP 3.002% Jun-2030
+    channel: Ukraine + Russia exposure, CEE risk premium (senior shown; T2 not quoted in Frankfurt)
+    confidence: medium
+  - issuer: Ukraine (sovereign)
+    instruments:
+    - isin: XS2895055981
+      type: sovereign
+      note: Ukraine Step-Up A Feb-2029
+    - isin: XS2895056013
+      type: sovereign
+      note: Ukraine Step-Up A Feb-2034
+    - isin: XS2895056872
+      type: sovereign
+      note: Ukraine Step-Up B Feb-2030
+    channel: 'Direct: reconstruction financing, coupon step-ups; the cleanest test of crowd odds vs. bond price'
+    confidence: high
+    headline_instrument: XS2895056013
   scenarios:
-    best: "Agreement with a credible sanctions-relief timetable → RBI AT1 re-rates toward Erste; CEE T2 tightens"
-    base: "No agreement in 2026 (crowd ≈80%) → status quo; carry, call-date optionality unchanged"
-    worst: "Talks collapse / escalation → Russian-sub write-down scenario reprices, AT1 extension risk"
-
+    best: Agreement with a credible sanctions-relief timetable → RBI AT1 re-rates toward Erste; CEE T2 tightens
+    base: No agreement in 2026 (crowd ≈80%) → status quo; carry, call-date optionality unchanged
+    worst: Talks collapse / escalation → Russian-sub write-down scenario reprices, AT1 extension risk
 - slug: israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963
   title: Israel–Iran ceasefire holds
   kind: survival
   category: special_situations
-  direction: negative       # YES = ceasefire *continues*; event of interest is it breaking → oil
+  direction: negative
   exposures:
-    - issuer: European airlines
-      instruments: [{isin: null, type: senior_hy, note: "Lufthansa hybrid / TAP / Wizz", verify: true}]
-      channel: "Jet fuel + Gulf overflight closure"
-      confidence: medium
-    - issuer: Energy HY / shipping
-      instruments: [{isin: null, type: senior_hy, note: "tanker & E&P names", verify: true}]
-      channel: "Oil shock; mixed sign across the sector"
-      confidence: low
+  - issuer: Deutsche Lufthansa
+    instruments:
+    - isin: XS1271836600
+      type: hybrid
+      note: Lufthansa 5.125% 2075 hybrid (thinly quoted)
+    channel: Jet fuel + Gulf overflight closure
+    confidence: medium
+  - issuer: Energy HY / shipping (sector)
+    instruments:
+    - isin: null
+      type: senior_hy
+      note: tanker & E&P names — sector view, no single instrument mapped
+    channel: Oil shock; mixed sign across the sector
+    confidence: low
   scenarios:
-    best: "Ceasefire holds through year-end → oil premium fades, airline HY carries"
-    base: "Holds with periodic scares → headline volatility, no credit event"
-    worst: "Ceasefire breaks → oil spike, Gulf airspace closure; airline HY widens"
-
+    best: Ceasefire holds through year-end → oil premium fades, airline HY carries
+    base: Holds with periodic scares → headline volatility, no credit event
+    worst: Ceasefire breaks → oil spike, Gulf airspace closure; airline HY widens
 - slug: will-france-pass-a-national-budget-by-december-31
   title: France passes a national budget by 31 Dec
   kind: single
   category: special_situations
   direction: positive
   exposures:
-    - issuer: French banks
-      instruments:
-        - {isin: null, type: AT1, note: "BNP Paribas EUR AT1", verify: true}
-        - {isin: null, type: AT1, note: "Société Générale EUR AT1", verify: true}
-        - {isin: null, type: AT1, note: "Crédit Agricole EUR AT1", verify: true}
-      channel: "Sovereign–bank nexus: OAT–Bund spread drives French AT1 beta"
-      confidence: high
-    - issuer: French insurers
-      instruments: [{isin: null, type: RT1, note: "AXA / CNP / Groupama RT1", verify: true}]
-      channel: "Solvency II own funds sensitivity to OAT spreads"
-      confidence: medium
+  - issuer: French banks
+    instruments:
+    - isin: FR001400BBL2
+      type: AT1
+      note: BNP Paribas 6.875% PerpNC
+    - isin: FR001400F2H9
+      type: AT1
+      note: BNP Paribas 7.375% PerpNC
+    - isin: FR0014012P25
+      type: AT1
+      note: Société Générale 6.125% PerpNC
+    - isin: FR001400F067
+      type: AT1
+      note: Crédit Agricole 7.25% PerpNC
+    - isin: FR001400XJP0
+      type: AT1
+      note: Crédit Agricole 5.875% PerpNC
+    channel: 'Sovereign–bank nexus: OAT–Bund spread drives French AT1 beta'
+    confidence: high
+    headline_instrument: FR0014012P25
+  - issuer: French insurers (sector)
+    instruments:
+    - isin: null
+      type: RT1
+      note: AXA / CNP / Groupama RT1 — sector view
+    channel: Solvency II own funds sensitivity to OAT spreads
+    confidence: medium
   scenarios:
-    best: "Budget passes cleanly → OAT–Bund compresses, French AT1 outperforms"
-    base: "Passes late via special law / 49.3 (crowd ≈38% by 31 Dec) → range-bound"
-    worst: "No budget, government falls → OAT–Bund > 90bp, French financial sub widens"
-
+    best: Budget passes cleanly → OAT–Bund compresses, French AT1 outperforms
+    base: Passes late via special law / 49.3 (crowd ≈38% by 31 Dec) → range-bound
+    worst: No budget, government falls → OAT–Bund > 90bp, French financial sub widens
 - slug: ecb-interest-rates-october-2026-20260723225848778
   title: ECB decision — October 2026
   kind: menu
-  focus: "25 bps increase"
+  focus: 25 bps increase
   category: macro
   direction: mixed
   exposures:
-    - issuer: EUR AT1 universe
-      instruments: [{isin: null, type: AT1, note: "reset-based AT1s with 2027–28 first calls", verify: true}]
-      channel: "Higher swap rates → higher resets → call economics improve for the issuer; extension risk falls"
-      confidence: high
-    - issuer: EUR corporate hybrids
-      instruments: [{isin: null, type: hybrid, note: "utilities / telco hybrids", verify: true}]
-      channel: "Refinancing cost of replacement hybrids; duration"
-      confidence: medium
+  - issuer: EUR AT1 (representatives)
+    instruments:
+    - isin: FR001400N2U2
+      type: AT1
+      note: Crédit Agricole 6.5% PerpNC
+    - isin: FR0014012P25
+      type: AT1
+      note: Société Générale 6.125% PerpNC
+    - isin: XS2785548053
+      type: AT1
+      note: RBI 7.375% PerpNC
+    channel: Higher swap rates → higher resets → call economics improve for the issuer; extension risk falls
+    confidence: high
+  - issuer: EUR corporate hybrids (representatives)
+    instruments:
+    - isin: XS2451803063
+      type: hybrid
+      note: Bayer 5.375% Mar-2082 hybrid
+    - isin: XS2675884733
+      type: hybrid
+      note: Volkswagen 7.875% PerpNC hybrid
+    channel: Refinancing cost of replacement hybrids; duration
+    confidence: medium
   scenarios:
-    best: "Hike (crowd ≈45%) → reset spreads up, fewer extensions; duration-light sub outperforms"
-    base: "No change (≈56%) → nothing"
-    worst: "Surprise cut → reset spreads down, extension risk in low-reset AT1s"
-
+    best: Hike (crowd ≈45%) → reset spreads up, fewer extensions; duration-light sub outperforms
+    base: No change (≈56%) → nothing
+    worst: Surprise cut → reset spreads down, extension risk in low-reset AT1s
 - slug: bank-of-england-decision-in-november-20260730150602252
   title: Bank of England — November 2026
   kind: menu
-  focus: "25 bps increase"
+  focus: 25 bps increase
   category: macro
   direction: mixed
   exposures:
-    - issuer: UK banks
-      instruments: [{isin: null, type: AT1, note: "Barclays / NatWest / Lloyds GBP & USD AT1", verify: true}]
-      channel: "NIM + reset economics"
-      confidence: medium
+  - issuer: UK banks (sector)
+    instruments:
+    - isin: null
+      type: AT1
+      note: Barclays / NatWest / Lloyds AT1 — sector view, GBP paper not quoted in Frankfurt
+    channel: NIM + reset economics
+    confidence: medium
   scenarios:
-    best: "Hike (crowd ≈68%) → GBP AT1 resets up"
-    base: "Hold → nothing"
-    worst: "Cut → extension risk in low-reset GBP AT1"
-
+    best: Hike (crowd ≈68%) → GBP AT1 resets up
+    base: Hold → nothing
+    worst: Cut → extension risk in low-reset GBP AT1
 - slug: us-x-china-tariff-agreement-by-december-31
   title: US–China tariff agreement by 31 Dec
   kind: single
   category: macro
   direction: positive
   exposures:
-    - issuer: European autos
-      instruments: [{isin: null, type: hybrid, note: "Volkswagen / Stellantis / Mercedes EUR hybrids", verify: true}]
-      channel: "China exposure + tariff pass-through on earnings → hybrid spreads"
-      confidence: medium
-    - issuer: European chemicals
-      instruments: [{isin: null, type: hybrid, note: "BASF / Bayer hybrids", verify: true}]
-      channel: "Trade-volume sensitivity"
-      confidence: low
+  - issuer: European autos
+    instruments:
+    - isin: XS2675884733
+      type: hybrid
+      note: Volkswagen 7.875% PerpNC hybrid
+    - isin: XS2675884576
+      type: hybrid
+      note: Volkswagen 7.5% PerpNC hybrid
+    - isin: XS3307413842
+      type: hybrid
+      note: Stellantis 6.25% PerpNC hybrid (Mar-2026 issue)
+    channel: China exposure + tariff pass-through on earnings → hybrid spreads
+    confidence: medium
+    headline_instrument: XS3307413842
+  - issuer: European chemicals
+    instruments:
+    - isin: XS2451803063
+      type: hybrid
+      note: Bayer 5.375% Mar-2082 hybrid
+    channel: Trade-volume sensitivity
+    confidence: low
   scenarios:
-    best: "Agreement (crowd ≈91%) already priced → limited upside"
-    base: "Agreement, details underwhelm → nothing"
-    worst: "Talks fail → autos hybrids widen; this is the asymmetric side"
-
+    best: Agreement (crowd ≈91%) already priced → limited upside
+    base: Agreement, details underwhelm → nothing
+    worst: Talks fail → autos hybrids widen; this is the asymmetric side
 - slug: which-airlines-will-announce-bankruptcy-by-december-31
   title: Airline bankruptcies by 31 Dec
   kind: basket
   category: distressed
   direction: negative
   names:
-    - match: JetBlue
-      issuer: JetBlue Airways
-      instruments: [{isin: USU04553AA87, type: senior_secured, note: "JetBlue 9.875% 2031 (loyalty-secured)"}]
-      channel: "Direct: Polymarket 1y PD vs bond-implied PD"
-      confidence: high
-    - match: Frontier
-      issuer: Frontier Group
-      instruments: [{isin: null, type: senior_secured, note: "Frontier loyalty notes", verify: true}]
-      channel: "Direct PD comparison"
-      confidence: high
-    - match: Allegiant
-      issuer: Allegiant Travel
-      instruments: [{isin: null, type: senior_secured, note: "Allegiant 7.25% 2027", verify: true}]
-      channel: "Direct PD comparison"
-      confidence: high
+  - match: JetBlue
+    issuer: JetBlue Airways
+    instruments:
+    - isin: USU04553AA87
+      type: senior_secured
+      note: JetBlue 9.875% 2031 (loyalty-secured) — no EU quote
+    channel: 'Direct: Polymarket 1y PD vs bond-implied PD'
+    confidence: high
+  - match: Frontier
+    issuer: Frontier Group
+    instruments:
+    - isin: null
+      type: senior_secured
+      note: Frontier loyalty-secured notes — no EU quote
+    channel: Direct PD comparison
+    confidence: high
+  - match: Allegiant
+    issuer: Allegiant Travel
+    instruments:
+    - isin: null
+      type: senior_secured
+      note: Allegiant 7.25% 2027 senior secured (tender launched 2026) — no EU quote
+    channel: Direct PD comparison
+    confidence: high
   scenarios:
-    best: "No filings → loyalty-secured paper pulls to par"
-    base: "One ULCC restructures out of court"
-    worst: "Chapter 11 → recovery on loyalty collateral is the whole trade"
-
+    best: No filings → loyalty-secured paper pulls to par
+    base: One ULCC restructures out of court
+    worst: Chapter 11 → recovery on loyalty collateral is the whole trade
 - slug: which-companies-announce-bankruptcy-before-2027
   title: Corporate bankruptcies before 2027
   kind: basket
   category: distressed
   direction: negative
   names:
-    - match: Carvana
-      issuer: Carvana
-      instruments: [{isin: null, type: senior_secured, note: "Carvana PIK toggle notes", verify: true}]
-      channel: "Direct PD; PIK structure is the kind of paper FSAM screens for"
-      confidence: high
-    - match: Beyond Meat
-      issuer: Beyond Meat
-      instruments: [{isin: null, type: convertible, note: "Beyond Meat 0% 2027 convert", verify: true}]
-      channel: "Direct PD"
-      confidence: high
-    - match: Xerox
-      issuer: Xerox Holdings
-      instruments: [{isin: null, type: senior_hy, note: "Xerox senior notes", verify: true}]
-      channel: "Direct PD"
-      confidence: medium
-    - match: Rivian
-      issuer: Rivian
-      instruments: [{isin: null, type: convertible, note: "Rivian green converts", verify: true}]
-      channel: "Direct PD"
-      confidence: medium
+  - match: Carvana
+    issuer: Carvana
+    instruments:
+    - isin: US146869AN20
+      type: senior_secured
+      note: Carvana 9%/12% cash/PIK 2028 — no EU quote
+    - isin: US146869AM47
+      type: senior_secured
+      note: Carvana 11%/13% cash/PIK 2030 — no EU quote
+    channel: Direct PD; PIK structure is the kind of paper FSAM screens for
+    confidence: high
+  - match: Beyond Meat
+    issuer: Beyond Meat
+    instruments:
+    - isin: null
+      type: convertible
+      note: Beyond Meat 0% 2027 convertible — no EU quote
+    channel: Direct PD
+    confidence: high
+  - match: Xerox
+    issuer: Xerox Holdings
+    instruments:
+    - isin: null
+      type: senior_hy
+      note: Xerox senior notes — no EU quote
+    channel: Direct PD
+    confidence: medium
+  - match: Rivian
+    issuer: Rivian
+    instruments:
+    - isin: null
+      type: convertible
+      note: Rivian green convertibles — no EU quote
+    channel: Direct PD
+    confidence: medium
   scenarios:
-    best: "Names refinance → PD markets drift to zero"
-    base: "One or two filings among the weakest (crowd 7–10%)"
-    worst: "Several filings; watch for Polymarket leading the bond"
-
+    best: Names refinance → PD markets drift to zero
+    base: One or two filings among the weakest (crowd 7–10%)
+    worst: Several filings; watch for Polymarket leading the bond
 - slug: us-recession-by-end-of-2026
   title: US recession by end-2026
   kind: single
   category: beta
   direction: negative
   exposures:
-    - issuer: HY index
-      instruments: [{isin: null, type: index, note: "iTraxx Crossover / CDX HY"}]
-      channel: "Pure beta. Shown so the board can separate it from the idiosyncratic rows."
-      confidence: high
+  - issuer: HY index
+    instruments:
+    - isin: null
+      type: index
+      note: iTraxx Crossover / CDX HY
+    channel: Pure beta. Shown so the board can separate it from the idiosyncratic rows.
+    confidence: high
   scenarios:
-    best: "No recession (crowd ≈94%)"
-    base: "Slowdown without NBER recession"
-    worst: "Recession → this is what the event-driven book is meant to be uncorrelated with"
+    best: No recession (crowd ≈94%)
+    base: Slowdown without NBER recession
+    worst: Recession → this is what the event-driven book is meant to be uncorrelated with

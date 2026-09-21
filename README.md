@@ -3,7 +3,7 @@
 **Prediction markets as a catalyst screen for event-driven credit.**
 Crowd-implied probabilities — and, for ladder markets, full hazard curves — for the events that move European subordinated and special-situations paper.
 
-Live site: _(GitHub Pages URL once deployed)_
+Live site: https://creditoracle.belkacem.xyz (GitHub Pages; DNS pending)
 
 ## The idea in one paragraph
 
@@ -16,8 +16,8 @@ The hook: a Polymarket *ladder* ("ceasefire by October / November / December …
 | Page | What it shows |
 |---|---|
 | **Catalyst Board** | One row per mapped event: P, Δ7d / Δ30d with a z-score vs. the market's own history, liquidity grade, direction for the credit, exposed issuers. Sortable, filterable. |
-| **Event** | P history, CDF (raw rungs + isotonic fit), piecewise-constant hazard curve, every market in the event, exposed instruments with channel and confidence, best/base/worst scenarios, Polymarket's resolution rules. |
-| **Hazard curves** | All ladders overlaid as hazard curves; per-ladder P(12m), λ(12m), E[T \| occurs]. |
+| **Event** | P history, CDF (raw rungs + isotonic fit), piecewise-constant hazard curve, every market in the event, **crowd vs. credit** (Frankfurt quotes for the exposed bonds, their β to the crowd probability, bond-implied hazard for bullets), exposed instruments with channel and confidence, best/base/worst scenarios, Polymarket's resolution rules. |
+| **Hazard curves** | All ladders overlaid as hazard curves; the headline ladder's curve rebuilt day by day as a time × tenor heatmap; per-ladder P(12m), λ(12m), E[T \| occurs]. |
 | **Methodology** | Every number's "how", the grading rules verbatim, and what's missing. |
 
 ## How it works
@@ -25,9 +25,13 @@ The hook: a Polymarket *ladder* ("ceasefire by October / November / December …
 ```
 data/mappings.yaml          hand-curated: event → channel → instruments (this is the product)
 pipeline/fetch_polymarket   Gamma API (markets, best bid/ask) + CLOB API (daily price history)
+pipeline/fetch_bonds        Deutsche Börse quotes/closes for every ISIN in the mapping; ECB + FRED curves. Best effort.
+pipeline/credit             bond rows per event: quote, bullet-bond implied hazard, β to the crowd series
 analytics/hazard            ladder → monotone CDF (PAVA, liquidity-weighted) → survival → hazard
 analytics/quality           A / B / C liquidity grade, three rules
 analytics/moves             Δ1d/7d/30d and a trailing-90d z-score
+analytics/bond_pd           YTM → spread over govt → λ = s/(1−R) → PD, bullets only
+analytics/beta              OLS of 7-day bond price changes on 7-day crowd probability changes
 pipeline/build              → site/data/*.json
 site/                       static HTML + inline SVG charts, no framework
 .github/workflows/update    every 6h: fetch, build, commit the snapshot, deploy Pages
@@ -41,6 +45,7 @@ The repository is the database: every snapshot and history file is committed.
 uv sync
 uv run pytest
 uv run python -m pipeline.fetch_polymarket   # ~70 API calls, no auth
+uv run python -m pipeline.fetch_bonds        # optional; skips anything it can't get
 uv run python -m pipeline.build
 cd site && python3 -m http.server 8765        # open http://localhost:8765
 ```
@@ -55,8 +60,8 @@ Prediction-market prices are thin, US-centric, and only a probability where some
 
 ## Roadmap
 
-- **Crowd vs. credit**: Polymarket 1y PD against bond-implied PD (spread / (1 − R)) for issuers with both a market and a public quote.
-- Hazard-curve history heatmap (time × tenor) for the headline ladder.
+- Same-issuer crowd PD vs. bond PD — blocked on a US bond price source (the names with Polymarket bankruptcy markets aren't quoted in Frankfurt).
+- Yield-to-call for AT1s / hybrids once first-call dates are in the mapping.
 - LLM-assisted screening of new Polymarket events into a review queue — nothing goes live without a human accepting it into `mappings.yaml`.
 
 ---

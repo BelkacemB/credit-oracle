@@ -143,3 +143,14 @@ footer p { margin: 4px 0; }
 .methodology p, .methodology li { max-width: 72ch; }
 .methodology code { font-size: 13px; background: var(--chip); padding: 1px 5px; border-radius: 4px; }
 .methodology .formula { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 10px 12px; margin: 8px 0; overflow-x: auto; }
+
+/* heatmap */
+.hm { font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.hm-head, .hm-row { display: flex; align-items: stretch; }
+.hm-head span { text-align: center; padding-bottom: 4px; flex: 1 1 0; }
+.hm-head .hm-date { flex: 0 0 52px; }
+.hm-row .hm-cell { flex: 1 1 0; }
+.hm-date { flex: 0 0 52px; text-align: right; padding-right: 8px; line-height: 12px; }
+.hm-cell { height: 12px; margin: 0 1px 1px 0; border-radius: 2px; }
+.hm-cell.empty { background: repeating-linear-gradient(45deg, transparent 0 3px, var(--grid) 3px 4px); }
+.hm-scale i { display: inline-block; width: 10px; height: 10px; margin-right: 1px; border-radius: 1px; vertical-align: middle; }
