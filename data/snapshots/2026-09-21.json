@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-09-21T14:57:45.869457+00:00",
+ "fetched_at": "2026-09-21T15:00:24.312440+00:00",
  "events": {
   "russia-x-ukraine-ceasefire-agreement-by": {
    "id": "478472",
@@ -1194,7 +1194,7 @@
    "title": "ECB Interest Rates: October 2026",
    "endDate": "2026-10-29T11:59:00Z",
    "volume": 173852.90385300003,
-   "liquidity": 23233.75302,
+   "liquidity": 22646.1207,
    "markets": [
     {
      "id": "3081963",
@@ -1210,7 +1210,7 @@
      "lastTradePrice": 0.001,
      "volume": 7248.632802,
      "volume24hr": null,
-     "liquidity": 5607.11149,
+     "liquidity": 5620.43149,
      "endDate": "2026-10-29T23:59:00Z",
      "closed": false,
      "active": true,
@@ -1219,7 +1219,7 @@
      "oneMonthPriceChange": -0.0015,
      "description": "This market will resolve according to the change in basis points in the deposit facility rate resulting from the October 2026 meeting of the European Central Bank, relative to the level it was prior to this meeting.\n\nThe resolution source will be official information from the European Central Bank, including the statement or release from its October 2026 meeting, scheduled for October 28-29, 2026, as listed on the official European Central Bank calendar (https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html). This market may resolve as soon as the statement or release of the European Central Bank's October 2026 meeting with relevant data is issued.\n\nIf the specified rate is defined by an upper and lower bound, the relevant change will be the change to the upper bound.\n\nIf the specified rate is changed to a level not expressed in the displayed options, the change will be rounded according to the following guidelines. Increases or decreases of less than 25 bps will be rounded to 25 bps (e.g. an increase or decrease of 10 bps would be considered to be an increase or decrease of 25 bps). Increases or decreases of greater than 25 bps will be rounded to the nearest 25 bps and will be rounded away from 0 in cases of equidistance (e.g., an increase or decrease of 37.5 bps would be considered to be an increase or decrease of 50 bps). Displayed options of \u201cIncrease\u201d or \u201cDecrease\u201d will include policy rate increases or decreases of any size.\n\nIf the specified meeting is postponed to a date and time before the start of the next scheduled meeting, this market will resolve based on the outcome of that postponed meeting. If the specified meeting is cancelled, or postponed such that no decision is announced by the start of the next scheduled meeting, this market will resolve to the \u201cNo Change\u201d bracket. Emergency changes to the specified rate not resulting from the specified meeting will not be considered.",
      "resolutionSource": "",
-     "updatedAt": "2026-09-21T14:52:00.314396Z",
+     "updatedAt": "2026-09-21T14:57:59.752631Z",
      "p_yes": 0.0005,
      "yes_token": "55593681391336583989620835310874662772082052401925665613839157834472881336782"
     },
@@ -1237,7 +1237,7 @@
      "lastTradePrice": 0.001,
      "volume": 22977.295550000006,
      "volume24hr": null,
-     "liquidity": 8122.1073,
+     "liquidity": 8226.86493,
      "endDate": "2026-10-29T23:59:00Z",
      "closed": false,
      "active": true,
@@ -1246,7 +1246,7 @@
      "oneMonthPriceChange": -0.002,
      "description": "This market will resolve according to the change in basis points in the deposit facility rate resulting from the October 2026 meeting of the European Central Bank, relative to the level it was prior to this meeting.\n\nThe resolution source will be official information from the European Central Bank, including the statement or release from its October 2026 meeting, scheduled for October 28-29, 2026, as listed on the official European Central Bank calendar (https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html). This market may resolve as soon as the statement or release of the European Central Bank's October 2026 meeting with relevant data is issued.\n\nIf the specified rate is defined by an upper and lower bound, the relevant change will be the change to the upper bound.\n\nIf the specified rate is changed to a level not expressed in the displayed options, the change will be rounded according to the following guidelines. Increases or decreases of less than 25 bps will be rounded to 25 bps (e.g. an increase or decrease of 10 bps would be considered to be an increase or decrease of 25 bps). Increases or decreases of greater than 25 bps will be rounded to the nearest 25 bps and will be rounded away from 0 in cases of equidistance (e.g., an increase or decrease of 37.5 bps would be considered to be an increase or decrease of 50 bps). Displayed options of \u201cIncrease\u201d or \u201cDecrease\u201d will include policy rate increases or decreases of any size.\n\nIf the specified meeting is postponed to a date and time before the start of the next scheduled meeting, this market will resolve based on the outcome of that postponed meeting. If the specified meeting is cancelled, or postponed such that no decision is announced by the start of the next scheduled meeting, this market will resolve to the \u201cNo Change\u201d bracket. Emergency changes to the specified rate not resulting from the specified meeting will not be considered.",
      "resolutionSource": "",
-     "updatedAt": "2026-09-21T14:52:00.314396Z",
+     "updatedAt": "2026-09-21T14:57:59.752631Z",
      "p_yes": 0.0005,
      "yes_token": "94914576478251006221481188865216272356988306648796635568962757188791981015838"
     },
@@ -1264,7 +1264,7 @@
      "lastTradePrice": 0.58,
      "volume": 65262.00164700001,
      "volume24hr": 3894.283402,
-     "liquidity": 2707.6893,
+     "liquidity": 2880.0111,
      "endDate": "2026-10-29T23:59:00Z",
      "closed": false,
      "active": true,
@@ -1273,7 +1273,7 @@
      "oneMonthPriceChange": -0.305,
      "description": "This market will resolve according to the change in basis points in the deposit facility rate resulting from the October 2026 meeting of the European Central Bank, relative to the level it was prior to this meeting.\n\nThe resolution source will be official information from the European Central Bank, including the statement or release from its October 2026 meeting, scheduled for October 28-29, 2026, as listed on the official European Central Bank calendar (https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html). This market may resolve as soon as the statement or release of the European Central Bank's October 2026 meeting with relevant data is issued.\n\nIf the specified rate is defined by an upper and lower bound, the relevant change will be the change to the upper bound.\n\nIf the specified rate is changed to a level not expressed in the displayed options, the change will be rounded according to the following guidelines. Increases or decreases of less than 25 bps will be rounded to 25 bps (e.g. an increase or decrease of 10 bps would be considered to be an increase or decrease of 25 bps). Increases or decreases of greater than 25 bps will be rounded to the nearest 25 bps and will be rounded away from 0 in cases of equidistance (e.g., an increase or decrease of 37.5 bps would be considered to be an increase or decrease of 50 bps). Displayed options of \u201cIncrease\u201d or \u201cDecrease\u201d will include policy rate increases or decreases of any size.\n\nIf the specified meeting is postponed to a date and time before the start of the next scheduled meeting, this market will resolve based on the outcome of that postponed meeting. If the specified meeting is cancelled, or postponed such that no decision is announced by the start of the next scheduled meeting, this market will resolve to the \u201cNo Change\u201d bracket. Emergency changes to the specified rate not resulting from the specified meeting will not be considered.",
      "resolutionSource": "",
-     "updatedAt": "2026-09-21T14:52:00.314396Z",
+     "updatedAt": "2026-09-21T14:57:59.752631Z",
      "p_yes": 0.615,
      "yes_token": "84152868338515899679432250924095516731289578084756867474199480586894696984453"
     },
@@ -1291,7 +1291,7 @@
      "lastTradePrice": 0.44,
      "volume": 51296.36019200001,
      "volume24hr": 3751.908462,
-     "liquidity": 1771.8855,
+     "liquidity": 1837.2423,
      "endDate": "2026-10-29T23:59:00Z",
      "closed": false,
      "active": true,
@@ -1300,7 +1300,7 @@
      "oneMonthPriceChange": 0.325,
      "description": "This market will resolve according to the change in basis points in the deposit facility rate resulting from the October 2026 meeting of the European Central Bank, relative to the level it was prior to this meeting.\n\nThe resolution source will be official information from the European Central Bank, including the statement or release from its October 2026 meeting, scheduled for October 28-29, 2026, as listed on the official European Central Bank calendar (https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html). This market may resolve as soon as the statement or release of the European Central Bank's October 2026 meeting with relevant data is issued.\n\nIf the specified rate is defined by an upper and lower bound, the relevant change will be the change to the upper bound.\n\nIf the specified rate is changed to a level not expressed in the displayed options, the change will be rounded according to the following guidelines. Increases or decreases of less than 25 bps will be rounded to 25 bps (e.g. an increase or decrease of 10 bps would be considered to be an increase or decrease of 25 bps). Increases or decreases of greater than 25 bps will be rounded to the nearest 25 bps and will be rounded away from 0 in cases of equidistance (e.g., an increase or decrease of 37.5 bps would be considered to be an increase or decrease of 50 bps). Displayed options of \u201cIncrease\u201d or \u201cDecrease\u201d will include policy rate increases or decreases of any size.\n\nIf the specified meeting is postponed to a date and time before the start of the next scheduled meeting, this market will resolve based on the outcome of that postponed meeting. If the specified meeting is cancelled, or postponed such that no decision is announced by the start of the next scheduled meeting, this market will resolve to the \u201cNo Change\u201d bracket. Emergency changes to the specified rate not resulting from the specified meeting will not be considered.",
      "resolutionSource": "",
-     "updatedAt": "2026-09-21T14:52:00.314396Z",
+     "updatedAt": "2026-09-21T14:57:59.752631Z",
      "p_yes": 0.395,
      "yes_token": "94848263203607789125512860435123110457668569401276741600575702258685414417653"
     },
@@ -1318,7 +1318,7 @@
      "lastTradePrice": 0.002,
      "volume": 27068.613662,
      "volume24hr": 2372.3555,
-     "liquidity": 5133.66691,
+     "liquidity": 4133.51467,
      "endDate": "2026-10-29T23:59:00Z",
      "closed": false,
      "active": true,
@@ -1327,7 +1327,7 @@
      "oneMonthPriceChange": -0.0035,
      "description": "This market will resolve according to the change in basis points in the deposit facility rate resulting from the October 2026 meeting of the European Central Bank, relative to the level it was prior to this meeting.\n\nThe resolution source will be official information from the European Central Bank, including the statement or release from its October 2026 meeting, scheduled for October 28-29, 2026, as listed on the official European Central Bank calendar (https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html). This market may resolve as soon as the statement or release of the European Central Bank's October 2026 meeting with relevant data is issued.\n\nIf the specified rate is defined by an upper and lower bound, the relevant change will be the change to the upper bound.\n\nIf the specified rate is changed to a level not expressed in the displayed options, the change will be rounded according to the following guidelines. Increases or decreases of less than 25 bps will be rounded to 25 bps (e.g. an increase or decrease of 10 bps would be considered to be an increase or decrease of 25 bps). Increases or decreases of greater than 25 bps will be rounded to the nearest 25 bps and will be rounded away from 0 in cases of equidistance (e.g., an increase or decrease of 37.5 bps would be considered to be an increase or decrease of 50 bps). Displayed options of \u201cIncrease\u201d or \u201cDecrease\u201d will include policy rate increases or decreases of any size.\n\nIf the specified meeting is postponed to a date and time before the start of the next scheduled meeting, this market will resolve based on the outcome of that postponed meeting. If the specified meeting is cancelled, or postponed such that no decision is announced by the start of the next scheduled meeting, this market will resolve to the \u201cNo Change\u201d bracket. Emergency changes to the specified rate not resulting from the specified meeting will not be considered.",
      "resolutionSource": "",
-     "updatedAt": "2026-09-21T14:52:00.314396Z",
+     "updatedAt": "2026-09-21T14:55:59.875237Z",
      "p_yes": 0.0025,
      "yes_token": "31631398148566965795903093548832949089796615009392418624468824026711919864972"
     }
@@ -1338,7 +1338,7 @@
    "title": "Bank of England decision in November?",
    "endDate": "2026-11-05T23:59:00Z",
    "volume": 103753.228198,
-   "liquidity": 20859.15264,
+   "liquidity": 21602.30678,
    "markets": [
     {
      "id": "3247823",
@@ -1354,7 +1354,7 @@
      "lastTradePrice": 0.001,
      "volume": 6195.847249,
      "volume24hr": null,
-     "liquidity": 5164.40249,
+     "liquidity": 5517.77581,
      "endDate": "2026-11-05T23:59:00Z",
      "closed": false,
      "active": true,
@@ -1363,7 +1363,7 @@
      "oneMonthPriceChange": -0.001,
      "description": "This market will resolve according to the change in basis points in the Bank Rate resulting from the November 2026 meeting of the Bank of England\u2019s Monetary Policy Committee, relative to the level it was prior to this meeting.\n\nThe resolution source will be official information from the Bank of England, including the statement or release from its November 2026 Monetary Policy Committee meeting, scheduled for November 5, 2026, as listed on the official Bank of England calendar (https://www.bankofengland.co.uk/monetary-policy/upcoming-mpc-dates). This market may resolve as soon as the statement or release of the Bank of England's November 2026 Monetary Policy Committee meeting with relevant data is issued.\n\nIf the specified rate is defined by an upper and lower bound, the relevant change will be the change to the upper bound.\n\nIf the specified rate is changed to a level not expressed in the displayed options, the change will be rounded according to the following guidelines. Increases or decreases of less than 25 bps will be rounded to 25 bps (e.g. an increase or decrease of 10 bps would be considered to be an increase or decrease of 25 bps). Increases or decreases of greater than 25 bps will be rounded to the nearest 25 bps and will be rounded away from 0 in cases of equidistance (e.g., an increase or decrease of 37.5 bps would be considered to be an increase or decrease of 50 bps). Displayed options of \u201cIncrease\u201d or \u201cDecrease\u201d will include policy rate increases or decreases of any size.\n\nIf the specified meeting is postponed to a date and time before the start of the next scheduled meeting, this market will resolve based on the outcome of that postponed meeting. If the specified meeting is cancelled, or postponed such that no decision is announced by the start of the next scheduled meeting, this market will resolve to the \u201cNo Change\u201d bracket. Emergency changes to the specified rate not resulting from the specified meeting will not be considered.",
      "resolutionSource": "",
-     "updatedAt": "2026-09-21T14:54:00.423994Z",
+     "updatedAt": "2026-09-21T14:57:59.752631Z",
      "p_yes": 0.0005,
      "yes_token": "9809315054705033380550332109517764277421611840908617065399500209351734474796"
     },
@@ -1381,7 +1381,7 @@
      "lastTradePrice": 0.001,
      "volume": 8451.009366999999,
      "volume24hr": null,
-     "liquidity": 7016.39663,
+     "liquidity": 7096.57805,
      "endDate": "2026-11-05T23:59:00Z",
      "closed": false,
      "active": true,
@@ -1390,7 +1390,7 @@
      "oneMonthPriceChange": null,
      "description": "This market will resolve according to the change in basis points in the Bank Rate resulting from the November 2026 meeting of the Bank of England\u2019s Monetary Policy Committee, relative to the level it was prior to this meeting.\n\nThe resolution source will be official information from the Bank of England, including the statement or release from its November 2026 Monetary Policy Committee meeting, scheduled for November 5, 2026, as listed on the official Bank of England calendar (https://www.bankofengland.co.uk/monetary-policy/upcoming-mpc-dates). This market may resolve as soon as the statement or release of the Bank of England's November 2026 Monetary Policy Committee meeting with relevant data is issued.\n\nIf the specified rate is defined by an upper and lower bound, the relevant change will be the change to the upper bound.\n\nIf the specified rate is changed to a level not expressed in the displayed options, the change will be rounded according to the following guidelines. Increases or decreases of less than 25 bps will be rounded to 25 bps (e.g. an increase or decrease of 10 bps would be considered to be an increase or decrease of 25 bps). Increases or decreases of greater than 25 bps will be rounded to the nearest 25 bps and will be rounded away from 0 in cases of equidistance (e.g., an increase or decrease of 37.5 bps would be considered to be an increase or decrease of 50 bps). Displayed options of \u201cIncrease\u201d or \u201cDecrease\u201d will include policy rate increases or decreases of any size.\n\nIf the specified meeting is postponed to a date and time before the start of the next scheduled meeting, this market will resolve based on the outcome of that postponed meeting. If the specified meeting is cancelled, or postponed such that no decision is announced by the start of the next scheduled meeting, this market will resolve to the \u201cNo Change\u201d bracket. Emergency changes to the specified rate not resulting from the specified meeting will not be considered.",
      "resolutionSource": "",
-     "updatedAt": "2026-09-21T14:54:00.423994Z",
+     "updatedAt": "2026-09-21T14:57:59.752631Z",
      "p_yes": 0.0015,
      "yes_token": "114751392990844349145629988801499640740311684267076595868730966703475136919723"
     },
@@ -1408,7 +1408,7 @@
      "lastTradePrice": 0.31,
      "volume": 36466.19057299999,
      "volume24hr": 1364.005484,
-     "liquidity": 2719.3274,
+     "liquidity": 2701.4474,
      "endDate": "2026-11-05T23:59:00Z",
      "closed": false,
      "active": true,
@@ -1417,7 +1417,7 @@
      "oneMonthPriceChange": -0.48,
      "description": "This market will resolve according to the change in basis points in the Bank Rate resulting from the November 2026 meeting of the Bank of England\u2019s Monetary Policy Committee, relative to the level it was prior to this meeting.\n\nThe resolution source will be official information from the Bank of England, including the statement or release from its November 2026 Monetary Policy Committee meeting, scheduled for November 5, 2026, as listed on the official Bank of England calendar (https://www.bankofengland.co.uk/monetary-policy/upcoming-mpc-dates). This market may resolve as soon as the statement or release of the Bank of England's November 2026 Monetary Policy Committee meeting with relevant data is issued.\n\nIf the specified rate is defined by an upper and lower bound, the relevant change will be the change to the upper bound.\n\nIf the specified rate is changed to a level not expressed in the displayed options, the change will be rounded according to the following guidelines. Increases or decreases of less than 25 bps will be rounded to 25 bps (e.g. an increase or decrease of 10 bps would be considered to be an increase or decrease of 25 bps). Increases or decreases of greater than 25 bps will be rounded to the nearest 25 bps and will be rounded away from 0 in cases of equidistance (e.g., an increase or decrease of 37.5 bps would be considered to be an increase or decrease of 50 bps). Displayed options of \u201cIncrease\u201d or \u201cDecrease\u201d will include policy rate increases or decreases of any size.\n\nIf the specified meeting is postponed to a date and time before the start of the next scheduled meeting, this market will resolve based on the outcome of that postponed meeting. If the specified meeting is cancelled, or postponed such that no decision is announced by the start of the next scheduled meeting, this market will resolve to the \u201cNo Change\u201d bracket. Emergency changes to the specified rate not resulting from the specified meeting will not be considered.",
      "resolutionSource": "",
-     "updatedAt": "2026-09-21T14:54:00.423994Z",
+     "updatedAt": "2026-09-21T14:57:59.752631Z",
      "p_yes": 0.32,
      "yes_token": "89904936605594152863868406887671497001916079037316322532070614607329556200942"
     },
@@ -1435,7 +1435,7 @@
      "lastTradePrice": 0.67,
      "volume": 40799.892096,
      "volume24hr": 2246.0788089999996,
-     "liquidity": 4261.2679,
+     "liquidity": 4304.4179,
      "endDate": "2026-11-05T23:59:00Z",
      "closed": false,
      "active": true,
@@ -1444,7 +1444,7 @@
      "oneMonthPriceChange": 0.49,
      "description": "This market will resolve according to the change in basis points in the Bank Rate resulting from the November 2026 meeting of the Bank of England\u2019s Monetary Policy Committee, relative to the level it was prior to this meeting.\n\nThe resolution source will be official information from the Bank of England, including the statement or release from its November 2026 Monetary Policy Committee meeting, scheduled for November 5, 2026, as listed on the official Bank of England calendar (https://www.bankofengland.co.uk/monetary-policy/upcoming-mpc-dates). This market may resolve as soon as the statement or release of the Bank of England's November 2026 Monetary Policy Committee meeting with relevant data is issued.\n\nIf the specified rate is defined by an upper and lower bound, the relevant change will be the change to the upper bound.\n\nIf the specified rate is changed to a level not expressed in the displayed options, the change will be rounded according to the following guidelines. Increases or decreases of less than 25 bps will be rounded to 25 bps (e.g. an increase or decrease of 10 bps would be considered to be an increase or decrease of 25 bps). Increases or decreases of greater than 25 bps will be rounded to the nearest 25 bps and will be rounded away from 0 in cases of equidistance (e.g., an increase or decrease of 37.5 bps would be considered to be an increase or decrease of 50 bps). Displayed options of \u201cIncrease\u201d or \u201cDecrease\u201d will include policy rate increases or decreases of any size.\n\nIf the specified meeting is postponed to a date and time before the start of the next scheduled meeting, this market will resolve based on the outcome of that postponed meeting. If the specified meeting is cancelled, or postponed such that no decision is announced by the start of the next scheduled meeting, this market will resolve to the \u201cNo Change\u201d bracket. Emergency changes to the specified rate not resulting from the specified meeting will not be considered.",
      "resolutionSource": "",
-     "updatedAt": "2026-09-21T14:54:00.423994Z",
+     "updatedAt": "2026-09-21T14:57:59.752631Z",
      "p_yes": 0.68,
      "yes_token": "84898183638368530003997197940806600768962072425288877833738032345744084637710"
     },
@@ -1462,7 +1462,7 @@
      "lastTradePrice": 0.002,
      "volume": 11840.288913000002,
      "volume24hr": null,
-     "liquidity": 3229.4793,
+     "liquidity": 3221.2943,
      "endDate": "2026-11-05T23:59:00Z",
      "closed": false,
      "active": true,
@@ -1471,7 +1471,7 @@
      "oneMonthPriceChange": -0.0135,
      "description": "This market will resolve according to the change in basis points in the Bank Rate resulting from the November 2026 meeting of the Bank of England\u2019s Monetary Policy Committee, relative to the level it was prior to this meeting.\n\nThe resolution source will be official information from the Bank of England, including the statement or release from its November 2026 Monetary Policy Committee meeting, scheduled for November 5, 2026, as listed on the official Bank of England calendar (https://www.bankofengland.co.uk/monetary-policy/upcoming-mpc-dates). This market may resolve as soon as the statement or release of the Bank of England's November 2026 Monetary Policy Committee meeting with relevant data is issued.\n\nIf the specified rate is defined by an upper and lower bound, the relevant change will be the change to the upper bound.\n\nIf the specified rate is changed to a level not expressed in the displayed options, the change will be rounded according to the following guidelines. Increases or decreases of less than 25 bps will be rounded to 25 bps (e.g. an increase or decrease of 10 bps would be considered to be an increase or decrease of 25 bps). Increases or decreases of greater than 25 bps will be rounded to the nearest 25 bps and will be rounded away from 0 in cases of equidistance (e.g., an increase or decrease of 37.5 bps would be considered to be an increase or decrease of 50 bps). Displayed options of \u201cIncrease\u201d or \u201cDecrease\u201d will include policy rate increases or decreases of any size.\n\nIf the specified meeting is postponed to a date and time before the start of the next scheduled meeting, this market will resolve based on the outcome of that postponed meeting. If the specified meeting is cancelled, or postponed such that no decision is announced by the start of the next scheduled meeting, this market will resolve to the \u201cNo Change\u201d bracket. Emergency changes to the specified rate not resulting from the specified meeting will not be considered.",
      "resolutionSource": "",
-     "updatedAt": "2026-09-21T14:54:00.423994Z",
+     "updatedAt": "2026-09-21T14:57:59.752631Z",
      "p_yes": 0.002,
      "yes_token": "62144541001702959052922816789699992714136138516295325465072317716210957966511"
     }
@@ -1662,7 +1662,7 @@
    "title": "Which companies announce bankruptcy before 2027?",
    "endDate": "2027-01-01T04:59:00Z",
    "volume": 241353.158618,
-   "liquidity": 12553.38827,
+   "liquidity": 12824.38426,
    "markets": [
     {
      "id": "693940",
@@ -1678,7 +1678,7 @@
      "lastTradePrice": 0.027,
      "volume": 71249.76357099999,
      "volume24hr": null,
-     "liquidity": 6751.41615,
+     "liquidity": 6751.41621,
      "endDate": "2027-01-01T04:59:00Z",
      "closed": false,
      "active": true,
@@ -1687,7 +1687,7 @@
      "oneMonthPriceChange": -0.0145,
      "description": "This market will resolve to \"Yes\" if the listed company announces that it will file for bankruptcy or has filed for bankruptcy of any variety by December 31, 2026, 11:59 PM ET.\n\nAn announcement will suffice for a \"Yes\" resolution, regardless of whether or not the actual filing occurs.\n\nThe announcement must be made through any of their official or verified channels, including a recorded or written statement by their CEO, legal representation, or any other individual or team that officially represents the company.\n\nA definitive consensus of credible reporting may also be used.",
      "resolutionSource": "",
-     "updatedAt": "2026-09-21T14:54:00.423994Z",
+     "updatedAt": "2026-09-21T14:57:59.752631Z",
      "p_yes": 0.0305,
      "yes_token": "19806056738295752725940787016027380831534067440024658262904357424465119487594"
     },
@@ -1705,7 +1705,7 @@
      "lastTradePrice": 0.09,
      "volume": 18170.692859000002,
      "volume24hr": null,
-     "liquidity": 397.783,
+     "liquidity": 389.916,
      "endDate": "2027-01-01T04:59:00Z",
      "closed": false,
      "active": true,
@@ -1714,7 +1714,7 @@
      "oneMonthPriceChange": -0.03,
      "description": "This market will resolve to \"Yes\" if the listed company announces that it will file for bankruptcy or has filed for bankruptcy of any variety by December 31, 2026, 11:59 PM ET.\n\nAn announcement will suffice for a \"Yes\" resolution, regardless of whether or not the actual filing occurs.\n\nThe announcement must be made through any of their official or verified channels, including a recorded or written statement by their CEO, legal representation, or any other individual or team that officially represents the company.\n\nA definitive consensus of credible reporting may also be used.",
      "resolutionSource": "",
-     "updatedAt": "2026-09-21T14:54:00.423994Z",
+     "updatedAt": "2026-09-21T14:57:59.752631Z",
      "p_yes": 0.1,
      "yes_token": "42775911936771482396322773189968903242896374765762347997069177592329476212181"
     },
@@ -1768,7 +1768,7 @@
      "oneMonthPriceChange": -0.105,
      "description": "This market will resolve to \"Yes\" if the listed company announces that it will file for bankruptcy or has filed for bankruptcy of any variety by December 31, 2026, 11:59 PM ET.\n\nAn announcement will suffice for a \"Yes\" resolution, regardless of whether or not the actual filing occurs.\n\nThe announcement must be made through any of their official or verified channels, including a recorded or written statement by their CEO, legal representation, or any other individual or team that officially represents the company.\n\nA definitive consensus of credible reporting may also be used.",
      "resolutionSource": "",
-     "updatedAt": "2026-09-21T14:54:00.423994Z",
+     "updatedAt": "2026-09-21T14:57:59.752631Z",
      "p_yes": 0.075,
      "yes_token": "77377524223237508172918961496360605340065769514242307438699419924652848883569"
     },
@@ -1795,7 +1795,7 @@
      "oneMonthPriceChange": -0.0415,
      "description": "This market will resolve to \"Yes\" if the listed company announces that it will file for bankruptcy or has filed for bankruptcy of any variety by December 31, 2026, 11:59 PM ET.\n\nAn announcement will suffice for a \"Yes\" resolution, regardless of whether or not the actual filing occurs.\n\nThe announcement must be made through any of their official or verified channels, including a recorded or written statement by their CEO, legal representation, or any other individual or team that officially represents the company.\n\nA definitive consensus of credible reporting may also be used.",
      "resolutionSource": "",
-     "updatedAt": "2026-09-21T14:52:00.314396Z",
+     "updatedAt": "2026-09-21T14:57:59.752631Z",
      "p_yes": 0.0435,
      "yes_token": "105135510417508099692218334850857224851157429290140971674956253918213984569151"
     },
@@ -1813,7 +1813,7 @@
      "lastTradePrice": 0.02,
      "volume": 56824.74866299999,
      "volume24hr": null,
-     "liquidity": 518.45088,
+     "liquidity": 518.11802,
      "endDate": "2027-01-01T04:59:00Z",
      "closed": false,
      "active": true,
@@ -1822,7 +1822,7 @@
      "oneMonthPriceChange": null,
      "description": "This market will resolve to \"Yes\" if the listed company announces that it will file for bankruptcy or has filed for bankruptcy of any variety by December 31, 2026, 11:59 PM ET.\n\nAn announcement will suffice for a \"Yes\" resolution, regardless of whether or not the actual filing occurs.\n\nThe announcement must be made through any of their official or verified channels, including a recorded or written statement by their CEO, legal representation, or any other individual or team that officially represents the company.\n\nA definitive consensus of credible reporting may also be used.",
      "resolutionSource": "",
-     "updatedAt": "2026-09-21T14:52:00.314396Z",
+     "updatedAt": "2026-09-21T14:57:59.752631Z",
      "p_yes": 0.0205,
      "yes_token": "25109290020476252374226115938539797850897082035675282342876007205594283863100"
     },
@@ -1844,12 +1844,12 @@
      "endDate": "2027-01-01T04:59:00Z",
      "closed": false,
      "active": true,
-     "oneDayPriceChange": -0.0015,
+     "oneDayPriceChange": -0.002,
      "oneWeekPriceChange": -0.0015,
      "oneMonthPriceChange": -0.006,
      "description": "This market will resolve to \"Yes\" if the listed company announces that it will file for bankruptcy or has filed for bankruptcy of any variety by December 31, 2026, 11:59 PM ET.\n\nAn announcement will suffice for a \"Yes\" resolution, regardless of whether or not the actual filing occurs.\n\nThe announcement must be made through any of their official or verified channels, including a recorded or written statement by their CEO, legal representation, or any other individual or team that officially represents the company.\n\nA definitive consensus of credible reporting may also be used.",
      "resolutionSource": "",
-     "updatedAt": "2026-09-21T14:52:00.314396Z",
+     "updatedAt": "2026-09-21T14:57:59.752631Z",
      "p_yes": 0.019,
      "yes_token": "50993207276103492926036541519251848994066694701963760886499047602999220312941"
     },
@@ -1876,7 +1876,7 @@
      "oneMonthPriceChange": -0.035,
      "description": "This market will resolve to \"Yes\" if the listed company announces that it will file for bankruptcy or has filed for bankruptcy of any variety by December 31, 2026, 11:59 PM ET.\n\nAn announcement will suffice for a \"Yes\" resolution, regardless of whether or not the actual filing occurs.\n\nThe announcement must be made through any of their official or verified channels, including a recorded or written statement by their CEO, legal representation, or any other individual or team that officially represents the company.\n\nA definitive consensus of credible reporting may also be used.",
      "resolutionSource": "",
-     "updatedAt": "2026-09-21T14:54:00.423994Z",
+     "updatedAt": "2026-09-21T14:57:59.752631Z",
      "p_yes": 0.055,
      "yes_token": "72607148195160466598516524157144733695269364242514220466646930695561330191681"
     },
@@ -1903,7 +1903,7 @@
      "oneMonthPriceChange": -0.005,
      "description": "This market will resolve to \"Yes\" if the listed company announces that it will file for bankruptcy or has filed for bankruptcy of any variety by December 31, 2026, 11:59 PM ET.\n\nAn announcement will suffice for a \"Yes\" resolution, regardless of whether or not the actual filing occurs.\n\nThe announcement must be made through any of their official or verified channels, including a recorded or written statement by their CEO, legal representation, or any other individual or team that officially represents the company.\n\nA definitive consensus of credible reporting may also be used.",
      "resolutionSource": "",
-     "updatedAt": "2026-09-21T14:54:00.423994Z",
+     "updatedAt": "2026-09-21T14:57:59.752631Z",
      "p_yes": 0.075,
      "yes_token": "69554794700266382723648209986027528659477189447273788919916457729659704535331"
     },
@@ -1930,7 +1930,7 @@
      "oneMonthPriceChange": -0.072,
      "description": "This market will resolve to \"Yes\" if the listed company announces that it will file for bankruptcy or has filed for bankruptcy of any variety by December 31, 2026, 11:59 PM ET.\n\nAn announcement will suffice for a \"Yes\" resolution, regardless of whether or not the actual filing occurs.\n\nThe announcement must be made through any of their official or verified channels, including a recorded or written statement by their CEO, legal representation, or any other individual or team that officially represents the company.\n\nA definitive consensus of credible reporting may also be used.",
      "resolutionSource": "",
-     "updatedAt": "2026-09-21T14:52:00.314396Z",
+     "updatedAt": "2026-09-21T14:57:59.752631Z",
      "p_yes": 0.048,
      "yes_token": "21059968772786252201923476780245429636720708679210252944523885179602502593266"
     },
@@ -1948,7 +1948,7 @@
      "lastTradePrice": 0.06,
      "volume": 493.53323,
      "volume24hr": null,
-     "liquidity": 343.9959,
+     "liquidity": 504.2901,
      "endDate": "2027-01-01T04:59:00Z",
      "closed": false,
      "active": true,
@@ -1957,7 +1957,7 @@
      "oneMonthPriceChange": -0.076,
      "description": "This market will resolve to \"Yes\" if the listed company announces that it will file for bankruptcy or has filed for bankruptcy of any variety by December 31, 2026, 11:59 PM ET.\n\nAn announcement will suffice for a \"Yes\" resolution, regardless of whether or not the actual filing occurs.\n\nThe announcement must be made through any of their official or verified channels, including a recorded or written statement by their CEO, legal representation, or any other individual or team that officially represents the company.\n\nA definitive consensus of credible reporting may also be used.",
      "resolutionSource": "",
-     "updatedAt": "2026-09-21T14:54:00.423994Z",
+     "updatedAt": "2026-09-21T14:57:59.752631Z",
      "p_yes": 0.039,
      "yes_token": "97510157327052869739194584818378069160877763424329920056839565486045361274938"
     },
@@ -1984,7 +1984,7 @@
      "oneMonthPriceChange": 0.0105,
      "description": "This market will resolve to \"Yes\" if the listed company announces that it will file for bankruptcy or has filed for bankruptcy of any variety by December 31, 2026, 11:59 PM ET.\n\nAn announcement will suffice for a \"Yes\" resolution, regardless of whether or not the actual filing occurs.\n\nThe announcement must be made through any of their official or verified channels, including a recorded or written statement by their CEO, legal representation, or any other individual or team that officially represents the company.\n\nA definitive consensus of credible reporting may also be used.",
      "resolutionSource": "",
-     "updatedAt": "2026-09-21T14:54:00.423994Z",
+     "updatedAt": "2026-09-21T14:57:59.752631Z",
      "p_yes": 0.104,
      "yes_token": "46053807850712425736395024445241197194003840581767390212517924284025324254844"
     },
@@ -2011,7 +2011,7 @@
      "oneMonthPriceChange": null,
      "description": "This market will resolve to \"Yes\" if the listed company announces that it will file for bankruptcy or has filed for bankruptcy of any variety by December 31, 2026, 11:59 PM ET.\n\nAn announcement will suffice for a \"Yes\" resolution, regardless of whether or not the actual filing occurs.\n\nThe announcement must be made through any of their official or verified channels, including a recorded or written statement by their CEO, legal representation, or any other individual or team that officially represents the company.\n\nA definitive consensus of credible reporting may also be used.",
      "resolutionSource": "",
-     "updatedAt": "2026-09-21T14:52:00.314396Z",
+     "updatedAt": "2026-09-21T14:57:59.752631Z",
      "p_yes": 0.0225,
      "yes_token": "57325241996309696995469366635116828264724084820870487744714892158852109477200"
     },
@@ -2038,7 +2038,7 @@
      "oneMonthPriceChange": -0.027,
      "description": "This market will resolve to \"Yes\" if the listed company announces that it will file for bankruptcy or has filed for bankruptcy of any variety by December 31, 2026, 11:59 PM ET.\n\nAn announcement will suffice for a \"Yes\" resolution, regardless of whether or not the actual filing occurs.\n\nThe announcement must be made through any of their official or verified channels, including a recorded or written statement by their CEO, legal representation, or any other individual or team that officially represents the company.\n\nA definitive consensus of credible reporting may also be used.",
      "resolutionSource": "",
-     "updatedAt": "2026-09-21T14:54:00.423994Z",
+     "updatedAt": "2026-09-21T14:57:59.752631Z",
      "p_yes": 0.0255,
      "yes_token": "21432827338791406982303011232614715090123561545737282783301666573424249987948"
     },
@@ -2065,7 +2065,7 @@
      "oneMonthPriceChange": -0.0645,
      "description": "This market will resolve to \"Yes\" if the listed company announces that it will file for bankruptcy or has filed for bankruptcy of any variety by December 31, 2026, 11:59 PM ET.\n\nAn announcement will suffice for a \"Yes\" resolution, regardless of whether or not the actual filing occurs.\n\nThe announcement must be made through any of their official or verified channels, including a recorded or written statement by their CEO, legal representation, or any other individual or team that officially represents the company.\n\nA definitive consensus of credible reporting may also be used.",
      "resolutionSource": "",
-     "updatedAt": "2026-09-21T14:54:00.423994Z",
+     "updatedAt": "2026-09-21T14:57:59.752631Z",
      "p_yes": 0.027,
      "yes_token": "97465838117609094655903070304833730787272302959574121487673943443278944868515"
     },
@@ -2075,25 +2075,25 @@
      "slug": "will-jc-penney-announce-bankruptcy-before-2027",
      "groupItemTitle": "JC Penney",
      "outcomes": "[\"Yes\", \"No\"]",
-     "outcomePrices": "[\"0.045\", \"0.955\"]",
+     "outcomePrices": "[\"0.05\", \"0.95\"]",
      "clobTokenIds": "[\"39925147769433485756519027057644081408838316803129988707272914464585338034437\", \"93428679411024842857120114005576374029499685587131048359708537446806011385572\"]",
-     "bestBid": 0.03,
+     "bestBid": 0.04,
      "bestAsk": 0.06,
-     "spread": 0.03,
+     "spread": 0.02,
      "lastTradePrice": null,
      "volume": null,
      "volume24hr": null,
-     "liquidity": 325.1037,
+     "liquidity": 326.5037,
      "endDate": "2027-01-01T04:59:00Z",
      "closed": false,
      "active": true,
-     "oneDayPriceChange": -0.01,
+     "oneDayPriceChange": -0.005,
      "oneWeekPriceChange": null,
      "oneMonthPriceChange": null,
      "description": "This market will resolve to \"Yes\" if the listed company announces that it will file for bankruptcy or has filed for bankruptcy of any variety by December 31, 2026, 11:59 PM ET.\n\nAn announcement will suffice for a \"Yes\" resolution, regardless of whether or not the actual filing occurs.\n\nThe announcement must be made through any of their official or verified channels, including a recorded or written statement by their CEO, legal representation, or any other individual or team that officially represents the company.\n\nA definitive consensus of credible reporting may also be used.",
      "resolutionSource": "",
-     "updatedAt": "2026-09-21T14:54:00.423994Z",
-     "p_yes": 0.045,
+     "updatedAt": "2026-09-21T14:57:59.752631Z",
+     "p_yes": 0.05,
      "yes_token": "39925147769433485756519027057644081408838316803129988707272914464585338034437"
     }
    ]
@@ -2128,7 +2128,7 @@
      "oneMonthPriceChange": -0.01,
      "description": "This market will resolve to \u201cYes\u201d if either of the following conditions is met:\n\n1.  The seasonally adjusted annualized percent change in quarterly U.S. real GDP from the previous quarter is less than 0.0 for two consecutive quarters between Q2 2025 and Q4 2026 (inclusive), as reported by the Bureau of Economic Analysis (BEA). \n\n2.  The National Bureau of Economic Research (NBER) publicly announces that a recession has occurred in the United States, at any point during 2025 or 2026, with the announcement made by the time the BEA releases the advance estimate for Q4 2026.\n\nOtherwise, this market will resolve to \"No\". \n\nNote that advance estimates will be considered. For example, if upon release, the advance estimate for Q3 2025 was negative, and the Q2 2025's most recent, up-to-date estimate was also negative, this market would resolve to \"Yes\". If on December 31, 2026 the latest estimate for quarterly GDP in Q3 2025 was negative, this market will stay open until the Advance estimate of Q4 2026 is published, at which point it will resolve to \"Yes\" if Q4 2026 was negative or if the NBER declares a recession by then.\n\nThis market will remain open until either i) one of the specified conditions is met; or ii) the GDP advance estimate for Q4 2026 is released. If the GDP advance estimate for Q4 2026 has not been released by June 30, 2027, 11:59 PM ET, this market will resolve based on the available releases at that time.\n\nThe resolution source will be the official announcements from the NBER and the BEA\u2019s estimate of seasonally adjusted annualized percent change in quarterly US real GDP from previous quarters as released by the Bureau of Economic Analysis (BEA), https://www.bea.gov/data/gdp/gross-domestic-product",
      "resolutionSource": "",
-     "updatedAt": "2026-09-21T14:54:00.423994Z",
+     "updatedAt": "2026-09-21T14:57:59.752631Z",
      "p_yes": 0.065,
      "yes_token": "100379208559626151022751801118534484742123694725746262280150222742563282755057"
     }
