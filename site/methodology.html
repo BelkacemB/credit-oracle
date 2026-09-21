@@ -1,0 +1,60 @@
+<!doctype html><html lang="en"><head><title>Methodology — Credit Oracle</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="assets/style.css"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22><path d=%22M1 13 L5 9 L8 11 L15 3%22 fill=%22none%22 stroke=%22%232a78d6%22 stroke-width=%222.5%22/></svg>"></head><body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="index.html">Credit Oracle</a>
+  <nav>
+    <a href="index.html" >Catalyst Board</a>
+    <a href="hazard.html" >Hazard curves</a>
+    <a href="methodology.html" aria-current=page>Methodology</a>
+  </nav>
+  <span class="asof"></span>
+</div></header>
+<main class="wrap methodology">
+  <h1>Methodology</h1>
+  <p class="lede">Every number on the site has a "how" here. Where something is rough, it says so.</p>
+
+  <h2>What this is</h2>
+  <p>An event-driven credit process has a step where someone has to answer <em>how likely is the catalyst?</em> — usually with a best / base / worst scenario tree and analyst judgement. For a subset of catalysts (ceasefires, elections, budgets, central-bank decisions, single-name bankruptcies, M&amp;A completions) there is now a live, tradeable, time-stamped probability: a prediction market. This site pulls those markets, maps each to the instruments on the other end of the transmission channel, and presents the probabilities in the shape credit people already read — a term structure and a hazard rate.</p>
+  <p>It is a <strong>screen input</strong>, in the same sense as a Bloomberg screen: it points at things worth a human look. It is not a signal.</p>
+
+  <h2>Probability</h2>
+  <p>P is the mid of the best bid and best ask on the YES token from Polymarket's Gamma API. Last-trade price is ignored: on thin markets it can be days old. If there is no two-sided book, the API's outcome price is used and the market is graded C.</p>
+
+  <h2>Liquidity grade</h2>
+  <p>Three rules, no weighting:</p>
+  <div class="formula">C  if book liquidity &lt; $1,000  or  bid–ask spread &gt; 8 pts
+A  if liquidity ≥ $20,000  and  spread ≤ 3 pts  and  lifetime volume ≥ $50,000
+B  otherwise</div>
+  <p>Calibrated on the 21 Sep 2026 snapshot: the Russia–Ukraine ladder rungs are mostly A, the ECB/BoE outcome markets are B, most single-name bankruptcy markets are C. A grade-C number is shown greyed and, on curves, as a hollow marker. It is displayed because hiding it would be worse; it is not to be relied on.</p>
+
+  <h2>Ladders → CDF → hazard</h2>
+  <p>A ladder is a set of markets "event by t₁", "event by t₂", … with t₁ &lt; t₂ &lt; …. Each YES price is P(T ≤ tᵢ), a point on the CDF of the event time T. "Continues through tᵢ" ladders are the complement: YES price = S(tᵢ), and the hazard shown is the hazard of the state ending.</p>
+  <p>Raw ladders are frequently non-monotone — a thin far rung trades below a liquid nearer one. The fitted CDF is the weighted least-squares non-decreasing fit (pool-adjacent-violators), with weights 1 / 0.5 / 0.15 for grades A / B / C so a thin rung cannot drag a liquid one. Raw and fitted are both drawn; the number of rungs the fit moved is stated on the page. Rungs whose date has passed are excluded (their price is a resolved 0/1, not a forecast).</p>
+  <div class="formula">Sᵢ = 1 − P̂ᵢ
+λᵢ = −ln(Sᵢ / Sᵢ₋₁) / (tᵢ − tᵢ₋₁)        [per year, constant on (tᵢ₋₁, tᵢ]]
+P(12m) = linear interpolation of P̂ at t = 1y
+λ(12m) = −ln(1 − P(12m))                 [average hazard over the first year]
+E[T | T ≤ t_last] = Σ (P̂ᵢ − P̂ᵢ₋₁) · (tᵢ₋₁ + tᵢ)/2  ÷  P̂_last</div>
+  <p>Prices are clamped to [0.0001, 0.9999] before taking logs. Tenors are in years from the snapshot date, ACT/365.25.</p>
+
+  <h2>Moves</h2>
+  <p>Δ1d / Δ7d / Δ30d are differences in P against the last observation at or before that many days ago, from Polymarket's own daily price history plus today's mid. z is the 7-day move divided by the standard deviation of the market's own 7-day moves over the trailing 90 days (needs ≥ 20 observations; undefined on a flat history). |z| ≥ 2 is highlighted.</p>
+
+  <h2>Mapping</h2>
+  <p>The event → channel → instrument mapping is hand-curated in a versioned YAML file. Categories follow the usual event-driven sub-strategy split (Special Situations, Distressed, Merger Arb, Macro) plus an explicit <em>Beta</em> bucket for things like "US recession" — shown so the board can separate systematic from idiosyncratic rather than pretend the former is alpha. Confidence on each exposure line is about the transmission channel, not about the event. ISINs marked "to verify" are descriptive placeholders awaiting a terminal check.</p>
+
+  <h2>What's missing, honestly</h2>
+  <ul>
+    <li><strong>European single names.</strong> Polymarket's bankruptcy markets are almost all US. The direct "crowd PD vs bond-implied PD" comparison therefore runs on US names for now. The gap is itself informative about where prediction markets would need to grow to be useful to a European sub-debt book.</li>
+    <li><strong>Bond-implied comparison</strong> (crowd P vs. spread-implied PD with a recovery assumption) is in progress; it will carry the same rough-and-stated treatment as everything else here.</li>
+    <li><strong>Resolution risk.</strong> A market resolves on its written rules, which are not always the credit event you care about. The rules are shown on each event page for that reason.</li>
+  </ul>
+
+  <h2>Data &amp; cadence</h2>
+  <p>Polymarket Gamma API (event and market metadata, best bid/ask) and CLOB API (daily price history), both public and unauthenticated. Refreshed every six hours by a scheduled job; the repository holds every snapshot.</p>
+</main>
+<footer class="wrap">
+  <p>Research tool, not investment advice. Prediction-market prices are what they are: thin, US-centric, and only a probability where someone will trade them — hence the liquidity grade next to every number. Polymarket data via its public API, as-is.</p>
+  <p>Built in Hamburg by <a href="https://belkacem.xyz">Belkacem Berchiche</a> · also <a href="https://bayesfc.com">BayesFC</a> · <a href="https://github.com/BelkacemB/credit-oracle">source</a></p>
+</footer>
+<script src="assets/app.js"></script>
+</body></html>

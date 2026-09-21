@@ -1,0 +1,35 @@
+<!doctype html><html lang="en"><head><title>Credit Oracle — Catalyst Board</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="assets/style.css"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22><path d=%22M1 13 L5 9 L8 11 L15 3%22 fill=%22none%22 stroke=%22%232a78d6%22 stroke-width=%222.5%22/></svg>"></head><body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="index.html">Credit Oracle</a>
+  <nav>
+    <a href="index.html" aria-current=page>Catalyst Board</a>
+    <a href="hazard.html" >Hazard curves</a>
+    <a href="methodology.html" >Methodology</a>
+  </nav>
+  <span class="asof"></span>
+</div></header>
+<main class="wrap">
+  <h1>Prediction markets as a catalyst screen for event-driven credit</h1>
+  <p class="lede">Crowd-implied probabilities — and, for ladder markets, full hazard curves — for the events that move European subordinated and special-situations paper. Each row maps a Polymarket event to a transmission channel and the instruments on the other end of it.</p>
+  <p class="tagline">Wie wahrscheinlich ist das Event? Der Markt hat eine Meinung.</p>
+
+  <h2>Largest 7-day moves</h2>
+  <div class="movers" id="movers"></div>
+
+  <h2>Catalyst Board</h2>
+  <div class="controls">
+    <label>Category <select id="f-cat"><option value="all">all</option><option value="special_situations">Special Situations</option><option value="distressed">Distressed</option><option value="macro">Macro / Rates</option><option value="beta">Beta</option></select></label>
+    <label>Min. liquidity grade <select id="f-grade"><option value="C">C (show all)</option><option value="B">B</option><option value="A">A</option></select></label>
+    <span class="muted">click a header to sort · bold-left rows are headline ladders</span>
+  </div>
+  <div style="overflow-x:auto"><table class="board" id="board"><thead><tr>
+    <th data-sort="title">Event</th><th data-sort="category" class="hide-sm">Category</th><th data-sort="p" class="num">P</th><th data-sort="d7" class="num">Δ 7d (pts)</th><th data-sort="d30" class="num hide-sm">Δ 30d</th><th class="hide-sm">30d</th><th data-sort="grade">Liq</th><th class="hide-sm">Credit</th><th class="hide-sm">Exposed</th>
+  </tr></thead><tbody></tbody></table></div>
+  <p class="small muted">P = mid of best bid/ask on the YES token. For ladders, P is the probability of the event within 12 months, interpolated on the monotone-fitted curve, and λ its average annualised hazard. Credit column = direction for the exposed credit if YES resolves. Grade: A liquid, B tradeable, C thin — <a href="methodology.html">rules</a>.</p>
+</main>
+<footer class="wrap">
+  <p>Research tool, not investment advice. Prediction-market prices are what they are: thin, US-centric, and only a probability where someone will trade them — hence the liquidity grade next to every number. Polymarket data via its public API, as-is.</p>
+  <p>Built in Hamburg by <a href="https://belkacem.xyz">Belkacem Berchiche</a> · also <a href="https://bayesfc.com">BayesFC</a> · <a href="https://github.com/BelkacemB/credit-oracle">source</a></p>
+</footer>
+<script src="assets/chart.js"></script><script src="assets/app.js"></script><script>renderBoard();</script>
+</body></html>

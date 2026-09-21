@@ -1,0 +1,21 @@
+<!doctype html><html lang="en"><head><title>Hazard curves — Credit Oracle</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="assets/style.css"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22><path d=%22M1 13 L5 9 L8 11 L15 3%22 fill=%22none%22 stroke=%22%232a78d6%22 stroke-width=%222.5%22/></svg>"></head><body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="index.html">Credit Oracle</a>
+  <nav>
+    <a href="index.html" >Catalyst Board</a>
+    <a href="hazard.html" aria-current=page>Hazard curves</a>
+    <a href="methodology.html" >Methodology</a>
+  </nav>
+  <span class="asof"></span>
+</div></header>
+<main class="wrap">
+  <h1>Crowd-implied hazard curves</h1>
+  <p class="lede">A Polymarket ladder — "will X happen by October / November / December …" — is a cumulative distribution over the event time. Take the survival function, assume a constant intensity between rungs, and you get the same object a CDS curve gives you: an annualised hazard rate per tenor bucket. Here they are for every ladder in the mapping.</p>
+  <div id="hazard"><p class="muted">Loading…</p></div>
+</main>
+<footer class="wrap">
+  <p>Research tool, not investment advice. Prediction-market prices are what they are: thin, US-centric, and only a probability where someone will trade them — hence the liquidity grade next to every number. Polymarket data via its public API, as-is.</p>
+  <p>Built in Hamburg by <a href="https://belkacem.xyz">Belkacem Berchiche</a> · also <a href="https://bayesfc.com">BayesFC</a> · <a href="https://github.com/BelkacemB/credit-oracle">source</a></p>
+</footer>
+<script src="assets/chart.js"></script><script src="assets/app.js"></script><script>renderHazard();</script>
+</body></html>
